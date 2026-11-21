@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>JobGuard · Fake job posting detector</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+<header>
+  <div class="wrap head">
+    <div class="logo"><span class="mark">J</span>JobGuard</div>
+    <nav><a href="#how">How it works</a><a href="/docs" target="_blank">API</a><a href="https://github.com/abhaychoudharybaba-web/fake-job-detector" target="_blank">GitHub</a></nav>
+  </div>
+</header>
+
+<section class="hero wrap">
+  <h1>Is this job posting real?</h1>
+  <p>Paste a job ad. JobGuard checks the text and a few simple signals, then tells you how likely it is to be a scam and why.</p>
+  <div class="examples">
+    <span>Try an example:</span>
+    <button type="button" data-ex="fake">Fake posting</button>
+    <button type="button" data-ex="real">Real posting</button>
+  </div>
+</section>
+
+<main class="wrap grid">
+  <form id="form" class="card">
+    <label>Job title<input name="title" placeholder="e.g. Data Entry Executive"></label>
+    <div class="row">
+      <label>Location<input name="location" placeholder="e.g. IN, MH, Mumbai"></label>
+      <label>Employment type
+        <select name="employment_type"><option value="">Not given</option><option>Full-time</option><option>Part-time</option><option>Contract</option><option>Temporary</option><option>Other</option></select>
+      </label>
+    </div>
+    <label>About the company<textarea name="company_profile" rows="3" placeholder="Company profile, if the ad has one"></textarea></label>
+    <label><span>Job description <em>required</em></span><textarea name="description" rows="6" required minlength="20" placeholder="Paste the full description"></textarea></label>
+    <label>Requirements<textarea name="requirements" rows="3"></textarea></label>
+    <div class="row">
+      <label>Benefits<textarea name="benefits" rows="2"></textarea></label>
+      <label>Salary range<input name="salary_range" placeholder="e.g. 20000-30000"></label>
+    </div>
+    <div class="checks">
+      <label class="check"><input type="checkbox" name="has_company_logo"> Ad shows a company logo</label>
+      <label class="check"><input type="checkbox" name="has_questions"> Ad has screening questions</label>
+      <label class="check"><input type="checkbox" name="telecommuting"> Work from home</label>
+    </div>
+    <button class="primary" id="go">Check this posting</button>
+  </form>
+
+  <section id="result" class="card result">
+    <div class="empty">
+      <div class="shield"></div>
+      <p>Your result will show up here.</p>
+    </div>
+  </section>
+</main>
+
+<section id="how" class="wrap how">
+  <h2>How it works</h2>
+  <div class="steps">
+    <div><b>1. Text</b><p>Title, company profile, description, requirements and benefits are cleaned and turned into TF-IDF features (single words and two-word phrases).</p></div>
+    <div><b>2. Signals</b><p>Simple facts about the ad: logo, company profile, screening questions, salary, length of the text.</p></div>
+    <div><b>3. Model</b><p id="model-line">A linear model trained on 17,880 real and fake postings gives a probability. The cut-off was tuned for the best F1 score.</p></div>
+  </div>
+  <table id="scores"></table>
+  <p class="note">This is a portfolio project. Use the result as a second opinion, not as the final word.</p>
+</section>
+
+<footer class="wrap">Built by Abhay Kumar Choudhary · Python, scikit-learn, FastAPI</footer>
+<script src="/static/app.js"></script>
+</body>
+</html>
