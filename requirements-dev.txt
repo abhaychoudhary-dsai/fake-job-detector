@@ -1,0 +1,6 @@
+# Extra packages for training, the LSTM experiment and tests
+-r requirements.txt
+matplotlib
+torch
+pytest
+httpx
