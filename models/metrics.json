@@ -1,0 +1,72 @@
+{
+  "chosen_model": "Logistic Regression (text + flags)",
+  "threshold": 0.6485996589239531,
+  "test_results": {
+    "Naive Bayes (text)": {
+      "precision": 0.708,
+      "recall": 0.688,
+      "f1": 0.698,
+      "pr_auc": 0.809,
+      "roc_auc": 0.974,
+      "threshold": 0.735
+    },
+    "Logistic Regression (text + flags)": {
+      "precision": 0.969,
+      "recall": 0.896,
+      "f1": 0.931,
+      "pr_auc": 0.969,
+      "roc_auc": 0.997,
+      "threshold": 0.649
+    },
+    "Linear SVM (text + flags)": {
+      "precision": 0.957,
+      "recall": 0.902,
+      "f1": 0.929,
+      "pr_auc": 0.971,
+      "roc_auc": 0.997,
+      "threshold": 0.389
+    },
+    "BiLSTM (text, PyTorch)": {
+      "precision": 0.954,
+      "recall": 0.832,
+      "f1": 0.889,
+      "pr_auc": 0.952,
+      "roc_auc": 0.993,
+      "threshold": 0.821
+    }
+  },
+  "rows": 17880,
+  "fake_share": 0.0484,
+  "signals": {
+    "has_company_logo": {
+      "warning_value": 0,
+      "fake_rate_with": 0.159,
+      "fake_rate_without": 0.02,
+      "posts": 3660
+    },
+    "no_company_profile": {
+      "warning_value": 1,
+      "fake_rate_with": 0.177,
+      "fake_rate_without": 0.019,
+      "posts": 3308
+    },
+    "has_questions": {
+      "warning_value": 0,
+      "fake_rate_with": 0.068,
+      "fake_rate_without": 0.028,
+      "posts": 9088
+    },
+    "no_requirements": {
+      "warning_value": 1,
+      "fake_rate_with": 0.057,
+      "fake_rate_without": 0.047,
+      "posts": 2698
+    },
+    "telecommuting": {
+      "warning_value": 1,
+      "fake_rate_with": 0.083,
+      "fake_rate_without": 0.047,
+      "posts": 767
+    }
+  }
+}
