@@ -1,5 +1,7 @@
 # JobGuard: Fake Job Posting Detector
 
+**Live demo: https://jobguard-fake-job-detector.onrender.com** (free server, the first load can take about a minute)
+
 A small web app that reads a job ad and estimates how likely it is to be fake. It also shows which words and which simple signals pushed the score up or down, so the result is not a black box.
 
 ![JobGuard screenshot](reports/screenshot.png)
